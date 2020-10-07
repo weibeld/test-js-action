@@ -9,20 +9,18 @@ try {
   core.setOutput("time", time);
 
   exec("pwd", (error, stdout, stderr) => {
-      if (error) {
-          console.log(`error: ${error.message}`);
-          return;
-      }
-      if (stderr) {
-          console.log(`stderr: ${stderr}`);
-          return;
-      }
-      console.log(`stdout: ${stdout}`);
+      if (error) fail(error);
+      console.log(stdout)
+      console.log(stderr)
   }); 
  
   // Get the JSON webhook payload for the event that triggered the workflow
-  const obj = JSON.stringify(github, undefined, 2)
-  console.log(`github: ${obj}`);
-} catch (error) {
-  core.setFailed(error.message);
+  //const obj = JSON.stringify(github, undefined, 2)
+  //console.log(`github: ${obj}`);
+} catch (err) {
+  fail(err)
+}
+
+function fail(err) {
+  core.setFailed(err);
 }
