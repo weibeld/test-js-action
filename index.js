@@ -8,7 +8,7 @@ try {
   const time = (new Date()).toTimeString();
   core.setOutput("time", time);
 
-  exec("sudo npm install -g ajv-cli", (error, stdout, stderr) => {
+  exec("pwd", (error, stdout, stderr) => {
       if (error) {
           console.log(`error: ${error.message}`);
           return;
