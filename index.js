@@ -1,14 +1,14 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
+const { exec } = require("child_process");
 
 try {
   const nameToGreet = core.getInput('who-to-greet');
   console.log(`Hello ${nameToGreet}!`);
   const time = (new Date()).toTimeString();
   core.setOutput("time", time);
-  const { exec } = require("child_process");
 
-  exec("ls -la", (error, stdout, stderr) => {
+  exec("npm install -g ajv-cli", (error, stdout, stderr) => {
       if (error) {
           console.log(`error: ${error.message}`);
           return;
