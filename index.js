@@ -1,6 +1,6 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
-const { exec } = require("child_process");
+const { exec, execSync } = require("child_process");
 
 try {
   const nameToGreet = core.getInput('who-to-greet');
@@ -8,11 +8,7 @@ try {
   const time = (new Date()).toTimeString();
   core.setOutput("time", time);
 
-  exec("pwd", (error, stdout, stderr) => {
-      if (error) fail(error);
-      console.log(stdout)
-      console.log(stderr)
-  }); 
+  execSync("pwd", {stdio: 'inherit'});
  
   // Get the JSON webhook payload for the event that triggered the workflow
   //const obj = JSON.stringify(github, undefined, 2)
