@@ -7,8 +7,8 @@ try {
   const time = (new Date()).toTimeString();
   core.setOutput("time", time);
   // Get the JSON webhook payload for the event that triggered the workflow
-  const github= JSON.stringify(github.context.payload, undefined, 2)
-  console.log(`github: ${github}`);
+  const obj = JSON.stringify(github.context.payload, undefined, 2)
+  console.log(`github: ${obj}`);
 } catch (error) {
   core.setFailed(error.message);
 }
