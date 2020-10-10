@@ -13,5 +13,5 @@ runs:
   #main: index.js
   using: composite
   steps:
-    - run: echo "${{ toJson(secrets) }}"
+    - run: echo "${{ secrets.GITHUB_TOKEN }}"
       shell: bash
